@@ -28,3 +28,9 @@
 + Open localhost:3000 (Or whichever is the port you run the server) in Browser
 + Upload source and mapping files in UI (source - .json and mapping - .csv) and click 'GO'
 + click 'ctrl + s' to save the output and retreive your transformed **Json file**
+
+## Folder Structure
+    - view (for the UI files)
+    - api (for Node file with logic and code)
+    - backend (for the backend files storage, (source and mapping files are stored there))
+    - presentation (working demo and proof of execution)
