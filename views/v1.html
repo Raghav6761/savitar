@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+
+    <!-- <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script> -->
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./custom/v1.css">
+</head>
+<body>
+  <div class="jumbotron text-center">
+    <div class="row">
+      <h1>TRANSFORMER</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-12" style=" white-space: pre;" >
+        <h3>JSON SOURCE        >>>>>>>>>>>     JSON DESTINATION</h3> 
+      </div>
+    </div>
+        
+  </div>
+        
+  <div class="container">
+    <form action="api/test" method="post" enctype="multipart/form-data">
+
+    <!-- </form>
+    <form> -->
+      <div class="row">
+        <div class="col-sm-6 text-center">
+          <h3>SOURCE</h3>      
+          <div class="form-group">
+            <!-- <div class="custom-file mb-3">
+              <input type="file" class="custom-file-input" id="customFile1" name="filename">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div> -->
+
+            <div class="text-center">
+              <label for="customFile1" class="form-label"></label>
+              <input class="form-control form-control-lg" id="customFile1" name="source" type="file">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 text-center">
+          <h3>MAPPING</h3>
+          <div class="form-group">
+            <!-- <div class="custom-file mb-3">
+              <input type="file" class="custom-file-input" id="customFile2" name="filename">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div> -->
+
+            <div class="text-center">
+              <label for="customFile2" class="form-label"></label>
+              <input class="form-control form-control-lg" id="customFile2" name="mapping" type="file">
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </form> -->
+
+      <div class="row center-button">
+        <div class = "col-sm-4">
+          <button  type='submit' class="button" id = "upload"><span>GO </span></button>
+        </div>  
+      </div>
+    </form>
+  </div>
+        
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity=
+      "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" 
+      crossorigin="anonymous">
+      
+  </script>
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $("#upload").click(function() {
+          
+          console.log("button clicked");
+            var fd = new FormData();
+
+            var customFile1 = $('#customFile1')[0].files[0];
+            var customFile2 = $('#customFile2')[0].files[0];
+
+            fd.append('file1', customFile1);
+            fd.append('file2', customFile2);
+  
+            console.log("start");
+            $.ajax({
+                url: '/api/test',
+                type: 'post',
+                data: fd,
+                contentType: false,
+                processData: false,
+                success: function(response){
+                    if(response != 0){
+                      alert('file uploaded');
+                    }
+                    else{
+                        alert('file not uploaded');
+                    }
+                },
+            });
+        });
+    });
+  </script>
+
+</body>
+</html>

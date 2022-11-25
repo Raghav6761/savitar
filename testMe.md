@@ -1,4 +1,3 @@
-# json-transformation-local
 # Team Savitar
 
 ## Technologies Used:
